@@ -15,11 +15,19 @@ import secrets
 from datetime import datetime, timedelta, timezone
 from urllib.parse import urlencode
 
+import sys
+
 import httpx
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.responses import RedirectResponse, JSONResponse
 from itsdangerous import URLSafeTimedSerializer, BadSignature
 
+# Vercel loads this file directly by path rather than as part of a normal
+# package import, so Python doesn't automatically know to look in this
+# same folder for sibling modules. Add this file's own directory to the
+# import path explicitly so `import db` below can find db.py regardless
+# of how the entrypoint was loaded.
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import db
 
 app = FastAPI(title="MiLO API")
