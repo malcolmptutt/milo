@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MiLO</title>
+<link rel="manifest" href="/manifest.json" />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+<div class="app">
+
+  <header class="top">
+    <div class="wordmark">MiLO</div>
+    <div id="auth-area"></div>
+  </header>
+
+  <div id="error-banner"></div>
+
+  <div class="mic-dock">
+    <button id="mic-btn" aria-label="Tap and talk to MiLO">&#127908;</button>
+    <div class="mic-hint" id="mic-hint">Tap and talk, or add a task below</div>
+  </div>
+
+  <div id="signed-out-note" class="signed-out-note" style="display:none;">
+    Connect your Google account to see today's calendar and start adding tasks.
+  </div>
+
+  <section class="panel" id="calendar-panel" style="display:none;">
+    <h2>Next 7 days</h2>
+    <div class="card-list" id="events-list"></div>
+  </section>
+
+  <section class="panel" id="tasks-panel" style="display:none;">
+    <div class="panel-head">
+      <h2>Tasks</h2>
+    </div>
+    <div class="card-list" id="tasks-list"></div>
+    <form class="add-task" id="add-task-form">
+      <input type="text" id="new-task-input" placeholder="Add a task" autocomplete="off" />
+      <button class="btn" type="submit">Add</button>
+    </form>
+  </section>
+
+</div>
+<script src="/app.js"></script>
+</body>
+</html>
